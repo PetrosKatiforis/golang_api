@@ -18,7 +18,7 @@ The project includes the following features:
 
 1) Setting up the environment variables
 ```python
-PORT = "Define the local port that the server will use"
+PORT = "Define the local port that the server will use (e.g. ':8080')"
 
 DATABASE_DIALECT = "Gorm's database dialect [e.g. 'postgres']"
 DATABASE_CONNECTION_STRING = "Gorm's connection string to the database"
