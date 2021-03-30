@@ -88,6 +88,6 @@ func Logout(w http.ResponseWriter, req *http.Request) {
 	helpers.ClearJwtCookie(&w)
 
 	json.NewEncoder(w).Encode(map[string]string{
-		"message": "The cookie was deleted succesfully",
+		"message": "The cookie was deleted successfully",
 	})
 }
