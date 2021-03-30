@@ -6,14 +6,10 @@ import (
 	"pioyi/golang_api/database"
 	"pioyi/golang_api/entity"
 	"pioyi/golang_api/helpers"
+	"pioyi/golang_api/interfaces"
 
 	"golang.org/x/crypto/bcrypt"
 )
-
-type UserResponse struct {
-	User  entity.User `json:"user"`
-	Token string      `json:"token"`
-}
 
 func CreateUser(w http.ResponseWriter, req *http.Request) {
 	// Reading the body, creating the new user instance
@@ -43,7 +39,7 @@ func CreateUser(w http.ResponseWriter, req *http.Request) {
 	// Generating token and response
 	database.SQLDatabase.Create(&newUser)
 	token, _ := helpers.GenerateJwtCookie(&w, &newUser)
-	response := UserResponse{User: newUser, Token: token}
+	response := interfaces.UserResponse{User: newUser, Token: token}
 
 	// Returning the json data
 	json.NewEncoder(w).Encode(response)
