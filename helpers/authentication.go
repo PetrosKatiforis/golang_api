@@ -40,7 +40,7 @@ func GenerateJwtCookie(w *http.ResponseWriter, user *entity.User) (string, error
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
-	// Signing the token with the our secret key
+	// Signing the token with the secret key
 	secretKey := []byte(os.Getenv("JWT_SECRET"))
 	tokenString, err := token.SignedString(secretKey)
 
