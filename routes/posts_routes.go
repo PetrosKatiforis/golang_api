@@ -75,6 +75,6 @@ func DeletePost(w http.ResponseWriter, req *http.Request) {
 
 	// Returning message
 	json.NewEncoder(w).Encode(map[string]string{
-		"message": "The post was deleted succesfully!",
+		"message": "The post was deleted successfully!",
 	})
 }
