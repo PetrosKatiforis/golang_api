@@ -6,7 +6,7 @@ The project includes the following features:
 
 - Json Web Tokens For Authentication
 - A Basic Gorilla/Mux Router
-- Authenticaiton Middleware
+- Authentication Middleware
 - Usage of Cookies
 - A Postgres Database Using GORM
 - Validation Using [Validator v10](https://github.com/go-playground/validator)
