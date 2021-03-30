@@ -21,10 +21,10 @@ func GetAllPosts(w http.ResponseWriter, req *http.Request) {
 
 func GetPostsByUser(w http.ResponseWriter, req *http.Request) {
 	var posts []entity.Post
-	user_id := mux.Vars(req)["id"]
+	userId := mux.Vars(req)["id"]
 
 	// Fetching the user's 15 latest posts and returing them
-	database.SQLDatabase.Where("user_id = ?", user_id).Find(&posts).Order("id desc").Limit(15)
+	database.SQLDatabase.Where("user_id = ?", userId).Find(&posts).Order("id desc").Limit(15)
 	json.NewEncoder(w).Encode(posts)
 }
 
@@ -57,12 +57,12 @@ func CreatePost(w http.ResponseWriter, req *http.Request) {
 func DeletePost(w http.ResponseWriter, req *http.Request) {
 	// Getting the post's id and the user data from the request's context
 	// (Originating from the authentication middleware)
-	post_id := mux.Vars(req)["id"]
-	user_id := req.Context().Value("token").(*interfaces.ContextData).Data.UserId
+	postId := mux.Vars(req)["id"]
+	userId := req.Context().Value("token").(*interfaces.ContextData).Data.UserId
 
 	// Fetching target psot
 	var post entity.Post
-	err := database.SQLDatabase.Where("id = ? AND user_id = ?", post_id, user_id).Find(&post).Error
+	err := database.SQLDatabase.Where("id = ? AND user_id = ?", postId, userId).Find(&post).Error
 
 	// Checking if the post was found
 	if err != nil {
