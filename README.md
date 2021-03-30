@@ -36,7 +36,7 @@ The project provides the following endpoints (Can be seen inside the utils/creat
 - `` POST /users/login `` Login from an account
 - `` POST /users/logout `` Logout (Delete cookie)
 - `` GET /psots/all `` Fetch the 15 latest posts
-- `` GET /users/{id}/posts `` Fettch a user's 15 latest posts
+- `` GET /users/{id}/posts `` Fetch a user's 15 latest posts
 - `` POST /posts/new `` Create a new post (Requires authentication cookie)
 - `` DELETE /posts/{id}/delete `` Delete a specified post (Requires authentication cookie + The post's owner account)
 
