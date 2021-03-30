@@ -12,7 +12,7 @@ type User struct {
 
 type Post struct {
 	gorm.Model
-	Title   string `validate:"min=5,max=28"`
+	Title   string `validate:"min=5,max=45"`
 	Content string `validate:"min=5,max=500"`
 	UserID  uint
 }
