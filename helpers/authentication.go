@@ -51,10 +51,11 @@ func GenerateJwtCookie(w *http.ResponseWriter, user *entity.User) (string, error
 
 	// Creating the cookie
 	http.SetCookie(*w, &http.Cookie{
-		Name:    "token",
-		Value:   tokenString,
-		Path:    "/",
-		Expires: expirationTime,
+		Name:     "token",
+		Value:    tokenString,
+		Path:     "/",
+		HttpOnly: true,
+		Expires:  expirationTime,
 	})
 
 	// Finally, returning the token
@@ -63,9 +64,10 @@ func GenerateJwtCookie(w *http.ResponseWriter, user *entity.User) (string, error
 
 func ClearJwtCookie(w *http.ResponseWriter) {
 	http.SetCookie(*w, &http.Cookie{
-		Name:    "token",
-		Value:   "",
-		Path:    "/",
-		Expires: time.Unix(0, 0),
+		Name:     "token",
+		Value:    "",
+		Path:     "/",
+		HttpOnly: true,
+		Expires:  time.Unix(0, 0),
 	})
 }
